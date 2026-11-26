@@ -62,3 +62,4 @@ pnpm-debug.log*
 .DS_Store
 Thumbs.db
 desktop.ini
+.platform_pids.json
