@@ -1,0 +1,61 @@
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: anti-scam-ticketing-backend
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/antiscam_ticketing}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: ${SPRING_DATASOURCE_HIKARI_MAX_POOL_SIZE:50}
+      minimum-idle: ${SPRING_DATASOURCE_HIKARI_MIN_IDLE:10}
+      idle-timeout: ${SPRING_DATASOURCE_HIKARI_IDLE_TIMEOUT:30000}
+      connection-timeout: ${SPRING_DATASOURCE_HIKARI_CONNECTION_TIMEOUT:20000}
+      pool-name: AntiScamHikariPool
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        jdbc:
+          batch_size: 25
+        order_inserts: true
+        order_updates: true
+
+# Security & JWT Configuration
+app:
+  jwt:
+    secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000} # 24 hours
+    refresh-expiration-ms: ${JWT_REFRESH_EXPIRATION_MS:604800000} # 7 days
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173}
+  razorpay:
+    key-id: ${RAZORPAY_KEY_ID:rzp_test_antiscam_key_id}
+    key-secret: ${RAZORPAY_KEY_SECRET:rzp_test_antiscam_secret_val}
+    webhook-secret: ${RAZORPAY_WEBHOOK_SECRET:rzp_webhook_secret_signature_test}
+    simulation-mode: ${RAZORPAY_SIMULATION_MODE:true}
+  python-service:
+    url: ${PYTHON_SERVICE_URL:http://localhost:8000}
+  defaults:
+    platform-commission-percent: ${DEFAULT_PLATFORM_COMMISSION_PERCENT:10.0}
+    escrow-hold-duration-seconds: ${DEFAULT_ESCROW_HOLD_DURATION_SECONDS:43200}
+    geofence-radius-meters: ${DEFAULT_GEOFENCE_RADIUS_METERS:300.0}
+    gps-accuracy-ceiling-meters: ${DEFAULT_GPS_ACCURACY_CEILING_METERS:150.0}
+    dispute-threshold-ratio: ${DEFAULT_DISPUTE_THRESHOLD_RATIO:0.25}
+    min-dispute-reporters: ${DEFAULT_MIN_DISPUTE_REPORTERS:3}
+    max-checkin-ratio-for-dispute: ${DEFAULT_MAX_CHECKIN_RATIO_FOR_DISPUTE:0.30}
+
+logging:
+  level:
+    root: INFO
+    com.antiscam.ticketing: DEBUG
+    org.springframework.security: WARN

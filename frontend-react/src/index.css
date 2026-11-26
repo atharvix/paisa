@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#0B0F17] text-slate-100 antialiased font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: 'Cinzel', 'Georgia', serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Custom Editorial High-Contrast Utilities */
+.editorial-card {
+  @apply bg-[#131A26] border border-[#222E40] rounded-xl shadow-2xl transition-all duration-200;
+}
+
+.editorial-card:hover {
+  @apply border-gold-500/40;
+}
+
+.badge-escrow {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950/80 border border-emerald-500/40 text-emerald-300;
+}
+
+.badge-dispute {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-rose-950/80 border border-rose-500/40 text-rose-300;
+}
+
+.badge-gold {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#4A0E1C] border border-[#D4AF37]/50 text-[#D4AF37];
+}

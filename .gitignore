@@ -1,0 +1,64 @@
+# --- Secrets & Local Environment ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+
+# --- Runtime Uploads & Temporary Test Artifacts ---
+uploads/
+service-python/uploads/
+tests/tmp_images/
+*.log
+logs/
+
+# --- Java / Maven / Spring Boot ---
+target/
+!.mvn/wrapper/maven-wrapper.jar
+*.jar
+*.war
+*.ear
+*.class
+hs_err_pid*
+replay_pid*
+
+# --- Python / FastAPI ---
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.coverage
+
+# --- Node.js / React / Vite Frontend ---
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- IDEs & Editors ---
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.classpath
+.project
+.settings/
+
+# --- OS Generated ---
+.DS_Store
+Thumbs.db
+desktop.ini
